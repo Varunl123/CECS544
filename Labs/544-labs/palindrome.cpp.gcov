@@ -1,0 +1,75 @@
+      // Varun Lingabathini
+        -:    0:Source:palindrome.cpp
+        -:    0:Graph:.\palindrome.gcno
+        -:    0:Data:.\palindrome.gcda
+        -:    0:Runs:5
+        -:    0:Programs:1
+        -:    1:#include <iostream>
+        -:    2:using namespace std;
+        -:    3:
+        -:    4:#include <vector>
+        -:    5:
+       10:    6:class MyString {
+        -:    7:	vector<char> thestring;
+        -:    8:	vector<char>::iterator fi;
+        -:    9:
+        -:   10:public:
+        -:   11:
+        5:   12:	bool Pal() {
+        5:   13:		int start = 0, end;
+        -:   14:
+        5:   15:		RemoveSpace();
+        5:   16:		UpCase();
+        5:   17:		end = thestring.size()-1;
+       17:   18:		while(start<=end)
+        9:   19:			if(thestring[start]==thestring[end]){
+        6:   20:				start++;
+        6:   21:				end--;
+        -:   22:			}
+        -:   23:			else
+        -:   24:			{
+        3:   25:				return false;
+        -:   26:			}
+        2:   27:		return	true;
+        -:   28:	}
+        5:   29:	void RemoveSpace(){
+        -:   30:
+       36:   31:		for(fi = thestring.begin(); fi != thestring.end();++fi)
+       31:   32:			if(*fi == ' ')
+        1:   33:				thestring.erase(fi);
+        5:   34:	}
+        -:   35:
+        5:   36:	void UpCase() {
+       36:   37:		for(fi = thestring.begin(); fi != thestring.end();++fi)
+       31:   38:			if(*fi>='a' && *fi<='z')
+       31:   39:				*fi = *fi - 32;
+        5:   40:	}
+        -:   41:
+        5:   42:	void GetString(){
+        -:   43:		char	c;
+        -:   44:
+        5:   45:		cout << "Enter a string:";
+        5:   46:		cin >> c;
+       69:   47:		while (c != '\n'){
+       32:   48:			thestring.push_back(c);
+       32:   49:			cin.get(c);
+        -:   50:		}
+        5:   51:	}
+        -:   52:	void WriteString() {
+        -:   53:		for(fi = thestring.begin(); fi != thestring.end();++fi)
+        -:   54:			cout << *fi;
+        -:   55:	}
+        -:   56:};
+        -:   57:
+        5:   58:int main () {
+        -:   59:
+       10:   60:	MyString s;
+        5:   61:	s.GetString();
+        5:   62:	if(s.Pal()) 
+        2:   63:		cout << "Palindrome";
+        -:   64:	else
+        3:   65:		cout << "Not a palindrome";
+        5:   66:	cout << endl;
+        -:   67:
+        5:   68:	return	0;
+       15:   69:}
